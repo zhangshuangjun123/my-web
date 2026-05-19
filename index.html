@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>JSON数据展示页面</title>
+    <style>
+        body{margin:50px;}
+        table{border-collapse: collapse;width:600px;}
+        td,th{border:1px solid #ccc;padding:10px;}
+    </style>
+</head>
+<body>
+    <h2>接口测试结果展示</h2>
+    <table>
+        <tr>
+            <th>字段名称</th>
+            <th>内容数据</th>
+        </tr>
+        <tr>
+            <td>文档ID</td>
+            <td id="docid"></td>
+        </tr>
+        <tr>
+            <td>提问问题</td>
+            <td id="qus"></td>
+        </tr>
+        <tr>
+            <td>标准答案</td>
+            <td id="ans"></td>
+        </tr>
+        <tr>
+            <td>测试状态</td>
+            <td id="sta"></td>
+        </tr>
+        <tr>
+            <td>测试时间</td>
+            <td id="dt"></td>
+        </tr>
+    </table>
+
+<script>
+// 读取本地json文件
+fetch('data.json')
+.then(res=>res.json())
+.then(data=>{
+    // 把JSON数据赋值到网页
+    document.getElementById("docid").innerText = data.doc_id;
+    document.getElementById("qus").innerText = data.question;
+    document.getElementById("ans").innerText = data.answer;
+    document.getElementById("sta").innerText = data.status;
+    document.getElementById("dt").innerText = data.time;
+})
+</script>
+</body>
+</html>
